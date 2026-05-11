@@ -38,10 +38,7 @@ export function Footer() {
     <footer className="bg-ink text-paper pt-20 pb-8">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-8 md:px-14">
         {/* Top grid */}
-        <div
-          className="grid gap-12 pb-14 border-b border-white/10 max-md:grid-cols-2 max-sm:grid-cols-1"
-          style={{ gridTemplateColumns: "1.4fr 1fr 1fr 1fr" }}
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[1.4fr_1fr_1fr_1fr] gap-10 md:gap-12 pb-14 border-b border-white/10">
           {/* Brand col */}
           <div>
             <a href="#" className="inline-flex items-center gap-2.5 group">
@@ -87,11 +84,11 @@ export function Footer() {
 
         {/* Big wordmark */}
         <div
-          className="font-display font-semibold leading-[0.9] tracking-[-0.05em] text-center whitespace-nowrap"
+          className="font-display font-semibold leading-[0.9] tracking-[-0.05em] text-center overflow-hidden"
           style={{
-            fontSize: "clamp(80px, 16vw, 260px)",
-            margin: "60px -20px -16px",
-            paddingRight: "24px",
+            fontSize: "clamp(48px, 13vw, 260px)",
+            margin: "48px 0 -12px",
+            paddingBottom: "8px",
           }}
         >
           <b className="text-orange">bizness</b>
