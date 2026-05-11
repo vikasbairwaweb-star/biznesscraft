@@ -9,6 +9,7 @@ export function CursorBlob() {
   useEffect(() => {
     const blob = blobRef.current;
     if (!blob) return;
+    const blobEl = blob as HTMLDivElement;
 
     // Hide on touch devices
     if (!window.matchMedia("(hover: hover)").matches) return;
@@ -16,9 +17,9 @@ export function CursorBlob() {
     const onMove = (e: MouseEvent) => {
       pos.current.tx = e.clientX;
       pos.current.ty = e.clientY;
-      blob.style.opacity = "1";
+      blobEl.style.opacity = "1";
     };
-    const onLeave = () => { blob.style.opacity = "0"; };
+    const onLeave = () => { blobEl.style.opacity = "0"; };
 
     document.addEventListener("mousemove", onMove);
     document.addEventListener("mouseleave", onLeave);
@@ -26,15 +27,15 @@ export function CursorBlob() {
     // Expand on interactive elements
     const interactives = document.querySelectorAll("a, button, .svc-card, .why-card, .principle");
     interactives.forEach((el) => {
-      el.addEventListener("mouseenter", () => { blob.style.width = "44px"; blob.style.height = "44px"; });
-      el.addEventListener("mouseleave", () => { blob.style.width = "18px"; blob.style.height = "18px"; });
+      el.addEventListener("mouseenter", () => { blobEl.style.width = "44px"; blobEl.style.height = "44px"; });
+      el.addEventListener("mouseleave", () => { blobEl.style.width = "18px"; blobEl.style.height = "18px"; });
     });
 
     let raf: number;
     function loop() {
       pos.current.cx += (pos.current.tx - pos.current.cx) * 0.18;
       pos.current.cy += (pos.current.ty - pos.current.cy) * 0.18;
-      blob.style.transform = `translate(${pos.current.cx}px, ${pos.current.cy}px) translate(-50%, -50%)`;
+      blobEl.style.transform = `translate(${pos.current.cx}px, ${pos.current.cy}px) translate(-50%, -50%)`;
       raf = requestAnimationFrame(loop);
     }
     raf = requestAnimationFrame(loop);
