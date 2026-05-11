@@ -21,6 +21,7 @@ const newsreader = Newsreader({
   weight: ["300", "400", "500"],
   variable: "--font-newsreader",
   display: "swap",
+  adjustFontFallback: false,
 });
 
 const inter = Inter({
