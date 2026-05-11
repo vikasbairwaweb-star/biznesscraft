@@ -48,37 +48,33 @@ export function Process() {
   }, []);
 
   return (
-    <section id="process" className="py-[120px] bg-ink text-paper relative overflow-hidden isolation-isolate">
+    <section id="process" className="py-[80px] md:py-[120px] bg-ink text-paper relative overflow-hidden isolation-isolate">
       {/* Background graphics */}
       <ProcessBg />
 
       <div className="max-w-[1440px] mx-auto px-4 sm:px-8 md:px-14 relative z-[2]">
         {/* Head */}
-        <div className="reveal grid gap-14 mb-[68px] items-end max-md:grid-cols-1 max-md:gap-6" style={{ gridTemplateColumns: "240px 1fr" }}>
+        <div className="reveal grid gap-6 md:gap-14 mb-12 md:mb-[68px] items-end grid-cols-1 md:grid-cols-[240px_1fr]">
           <div className="font-mono text-[11px] tracking-[0.16em] uppercase text-white/50 pt-2 border-t border-paper inline-block w-fit">
             N° 04 — Method
           </div>
           <div>
-            <h2 className="font-display font-medium leading-[0.96] tracking-tightest text-paper" style={{ fontSize: "clamp(40px, 5.5vw, 84px)" }}>
+            <h2 className="font-display font-medium leading-[0.96] tracking-tightest text-paper" style={{ fontSize: "clamp(36px, 5.5vw, 84px)" }}>
               From idea to <em className="font-serif italic text-orange font-normal">liftoff</em>, in four stages.
             </h2>
-            <p className="mt-5 text-white/70 text-[18px] max-w-[56ch]">Every project follows the same trusted method — one we've sharpened across 150+ launches.</p>
+            <p className="mt-5 text-white/70 text-[16px] md:text-[18px]">Every project follows the same trusted method — one we've sharpened across 150+ launches.</p>
           </div>
         </div>
 
-        {/* Timeline */}
-        <div
-          ref={timelineRef}
-          className="relative grid pt-9 gap-6 max-md:grid-cols-1"
-          style={{ gridTemplateColumns: "repeat(4,1fr)" }}
-        >
-          {/* Horizontal rule */}
-          <div className="absolute top-[52px] left-0 right-0 h-px bg-white/15 max-md:hidden" />
+        {/* Timeline — vertical on mobile, horizontal on desktop */}
+        <div ref={timelineRef} className="relative">
+          {/* Horizontal rule — desktop only */}
+          <div className="hidden md:block absolute top-[52px] left-0 right-0 h-px bg-white/15" />
 
-          {/* Rocket tracker */}
+          {/* Rocket tracker — desktop only */}
           <div
             ref={rocketRef}
-            className="absolute top-[56px] left-0 -translate-y-1/2 w-7 h-7 transition-[left] duration-[1200ms] cubic-bezier(.2,.7,.2,1) max-md:hidden"
+            className="hidden md:block absolute top-[56px] left-0 -translate-y-1/2 w-7 h-7 transition-[left] duration-[1200ms]"
             style={{ transitionTimingFunction: "cubic-bezier(.2,.7,.2,1)" }}
           >
             <svg viewBox="0 0 28 28" fill="none">
@@ -87,23 +83,28 @@ export function Process() {
             </svg>
           </div>
 
-          {STEPS.map((step, i) => (
-            <div
-              key={i}
-              className="proc-step reveal relative pt-20 max-md:pt-0 max-md:pl-6 max-md:border-l max-md:border-white/15"
-              style={{ transitionDelay: `${i * 0.1}s` }}
-            >
+          {/* Steps grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-0 md:gap-6 md:pt-9">
+            {STEPS.map((step, i) => (
               <div
-                className="absolute top-[52px] left-0 w-[9px] h-[9px] rounded-full bg-orange shadow-[0_0_0_4px_rgba(242,92,25,0.18)] max-md:hidden"
-              />
-              <div className="font-mono text-[11px] tracking-[0.16em] text-orange uppercase mb-3">
-                {step.phase}
+                key={i}
+                className="proc-step reveal relative pl-6 py-6 border-l border-white/15 md:pl-0 md:border-l-0 md:pt-20 md:pb-0"
+                style={{ transitionDelay: `${i * 0.1}s` }}
+              >
+                {/* Timeline dot — desktop only */}
+                <div className="hidden md:block absolute top-[52px] left-0 w-[9px] h-[9px] rounded-full bg-orange shadow-[0_0_0_4px_rgba(242,92,25,0.18)]" />
+                {/* Mobile dot */}
+                <div className="md:hidden absolute left-[-5px] top-7 w-[9px] h-[9px] rounded-full bg-orange shadow-[0_0_0_4px_rgba(242,92,25,0.18)]" />
+
+                <div className="font-mono text-[11px] tracking-[0.16em] text-orange uppercase mb-3">
+                  {step.phase}
+                </div>
+                <h4 className="font-display font-medium text-[22px] md:text-[26px] tracking-snug leading-[1.15]">{step.title}</h4>
+                <p className="mt-2.5 text-white/65 text-[14px] md:text-[14.5px] leading-[1.55]">{step.body}</p>
+                <div className="mt-4 font-mono text-[10.5px] tracking-[0.12em] uppercase text-white/50">{step.dur}</div>
               </div>
-              <h4 className="font-display font-medium text-[26px] tracking-snug leading-[1.15]">{step.title}</h4>
-              <p className="mt-2.5 text-white/65 text-[14.5px] leading-[1.55] max-w-[28ch]">{step.body}</p>
-              <div className="mt-4 font-mono text-[10.5px] tracking-[0.12em] uppercase text-white/50">{step.dur}</div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
