@@ -1,0 +1,277 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Design Tokens ─────────────────────────── */
+:root {
+  --ink:         #14110F;
+  --ink-2:       #1F1B17;
+  --cream:       #F2EBDD;
+  --paper:       #F8F3E7;
+  --paper-2:     #EFE7D3;
+  --orange:      #F25C19;
+  --orange-2:    #E04A0A;
+  --orange-soft: #FCE3D2;
+  --muted:       #7A7166;
+  --hairline:    rgba(20,17,15,0.14);
+  --hairline-2:  rgba(20,17,15,0.06);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+html, body {
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; border: none; background: none; cursor: pointer; color: inherit; }
+img, svg { display: block; max-width: 100%; }
+::selection { background: var(--orange); color: var(--paper); }
+
+/* ── Keyframes ─────────────────────────────── */
+@keyframes tick {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes pulse-dot {
+  50% { opacity: 0.35; transform: scale(0.8); }
+}
+@keyframes float-a {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  50%       { transform: translate(-40px, 30px) scale(1.06); }
+}
+@keyframes float-b {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  50%       { transform: translate(50px, -40px) scale(1.08); }
+}
+@keyframes float-c {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  50%       { transform: translate(80px, 50px) scale(0.92); }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.6); }
+  50%       { opacity: 0.7; transform: scale(1); }
+}
+@keyframes trace {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes rise {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes liftoff {
+  0%   { transform: translate(-50%, 32%); }
+  4%   { transform: translate(-50.4%, 33%); }
+  6%   { transform: translate(-49.6%, 31%); }
+  8%   { transform: translate(-50%, 32%); }
+  10%  { transform: translate(-50%, 30%); }
+  50%  { transform: translate(-50%, -20%); }
+  78%  { transform: translate(-50%, -120%); opacity: 1; }
+  82%  { transform: translate(-50%, -160%); opacity: 0; }
+  83%  { transform: translate(-50%, 32%);  opacity: 0; }
+  88%  { transform: translate(-50%, 32%);  opacity: 1; }
+  100% { transform: translate(-50%, 32%); }
+}
+@keyframes flame {
+  from { transform: scaleY(1) scaleX(1); }
+  to   { transform: scaleY(1.35) scaleX(0.92); }
+}
+@keyframes puff {
+  0%   { opacity: 0;    transform: translate(-50%, 30%)  scale(0.3); }
+  15%  { opacity: 0.85; transform: translate(-50%, 0%)   scale(1);   }
+  60%  { opacity: 0.55; transform: translate(calc(-50% + var(--dx, 0px)), -120%) scale(1.9); }
+  100% { opacity: 0;    transform: translate(calc(-50% + var(--dx, 0px)), -260%) scale(2.8); }
+}
+@keyframes orbit-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes bob {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50%       { transform: translate(0, -8px) rotate(-1deg); }
+}
+@keyframes blink-cursor {
+  50% { opacity: 0; }
+}
+
+/* ── Smoke puffs ───────────────────────────── */
+.puff {
+  position: absolute;
+  bottom: 0;
+  width: 26%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, rgba(255,255,255,0.85) 0%, rgba(220,210,195,0.6) 35%, rgba(180,170,155,0) 75%);
+  opacity: 0;
+  filter: blur(2px);
+  animation: puff 5s ease-out infinite;
+  transform: translate(-50%, 20%) scale(0.3);
+}
+.puff.dark {
+  background: radial-gradient(circle at 35% 30%, rgba(120,110,100,0.55) 0%, rgba(60,55,50,0.3) 40%, rgba(20,17,15,0) 75%);
+}
+.puff:nth-child(1)  { left: 38%; animation-delay: 0s; }
+.puff:nth-child(2)  { left: 56%; animation-delay: 0.45s; }
+.puff:nth-child(3)  { left: 46%; animation-delay: 0.9s; }
+.puff:nth-child(4)  { left: 30%; animation-delay: 1.35s; }
+.puff:nth-child(5)  { left: 64%; animation-delay: 1.8s; }
+.puff:nth-child(6)  { left: 42%; animation-delay: 2.25s; }
+.puff:nth-child(7)  { left: 52%; animation-delay: 2.7s; }
+.puff:nth-child(8)  { left: 36%; animation-delay: 3.15s; }
+.puff:nth-child(9)  { left: 60%; animation-delay: 3.6s; }
+.puff:nth-child(10) { left: 48%; animation-delay: 4.05s; }
+.puff:nth-child(odd)  { --dx: -18px; }
+.puff:nth-child(even) { --dx:  22px; }
+
+/* ── Rocket ────────────────────────────────── */
+.rocket {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 36%;
+  transform: translate(-50%, 30%);
+  animation: liftoff 16s cubic-bezier(.5,0,.5,1) infinite;
+  z-index: 3;
+  filter: drop-shadow(0 8px 16px rgba(20,17,15,0.18));
+}
+.rocket .flame {
+  transform-box: fill-box;
+  transform-origin: 50% 0%;
+  animation: flame 0.14s ease-in-out infinite alternate;
+}
+
+/* ── SVG trace lines ───────────────────────── */
+.trace-path {
+  fill: none;
+  stroke: rgba(20,17,15,0.18);
+  stroke-width: 1;
+  stroke-dasharray: 1600;
+  stroke-dashoffset: 1600;
+  animation: trace 5s cubic-bezier(.2,.7,.2,1) 0.4s forwards;
+}
+.trace-path.accent {
+  stroke: var(--orange);
+  stroke-width: 1.2;
+  opacity: 0.55;
+}
+
+/* ── Hero headline words ───────────────────── */
+.hero-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(28px);
+  animation: rise 0.9s cubic-bezier(.2,.7,.2,1) forwards;
+}
+.hero-word:nth-child(1) { animation-delay: 0.05s; }
+.hero-word:nth-child(2) { animation-delay: 0.12s; }
+.hero-word:nth-child(3) { animation-delay: 0.19s; }
+.hero-word:nth-child(4) { animation-delay: 0.26s; }
+.hero-word:nth-child(5) { animation-delay: 0.33s; }
+.hero-word:nth-child(6) { animation-delay: 0.40s; }
+
+/* ── Underline draw ────────────────────────── */
+.underline-path {
+  fill: none;
+  stroke: var(--orange);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: draw 1.2s cubic-bezier(.2,.7,.2,1) 0.9s forwards;
+}
+
+/* ── Orbit ─────────────────────────────────── */
+.orbit-ring {
+  position: absolute;
+  inset: 8%;
+  border: 1px dashed rgba(20,17,15,0.18);
+  border-radius: 50%;
+  animation: orbit-spin 24s linear infinite;
+}
+.orbit-ring::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background: var(--orange);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 0 4px rgba(242,92,25,0.18);
+}
+
+/* ── Code cursor ───────────────────────────── */
+.code-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 16px;
+  background: var(--orange);
+  vertical-align: -3px;
+  margin-left: 2px;
+  animation: blink-cursor 1s steps(2) infinite;
+}
+
+/* ── Process bg arcs ───────────────────────── */
+.proc-arc-dashed {
+  fill: none;
+  stroke: rgba(242,92,25,0.35);
+  stroke-width: 1.2;
+  stroke-dasharray: 6 8;
+}
+.proc-arc-solid {
+  fill: none;
+  stroke: rgba(255,255,255,0.10);
+  stroke-width: 1.2;
+}
+
+/* ── CTA bg arcs ───────────────────────────── */
+.cta-arc-dashed {
+  fill: none;
+  stroke: rgba(20,17,15,0.28);
+  stroke-width: 1.2;
+  stroke-dasharray: 8 10;
+}
+.cta-arc-solid {
+  fill: none;
+  stroke: rgba(20,17,15,0.18);
+  stroke-width: 1.2;
+}
+
+/* ── Scroll reveals ────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(.2,.7,.2,1), transform 0.9s cubic-bezier(.2,.7,.2,1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(.2,.7,.2,1), transform 0.8s cubic-bezier(.2,.7,.2,1);
+}
+.reveal-stagger.in > * { opacity: 1; transform: none; }
+.reveal-stagger.in > *:nth-child(1) { transition-delay: 0.05s; }
+.reveal-stagger.in > *:nth-child(2) { transition-delay: 0.14s; }
+.reveal-stagger.in > *:nth-child(3) { transition-delay: 0.23s; }
+.reveal-stagger.in > *:nth-child(4) { transition-delay: 0.32s; }
+.reveal-stagger.in > *:nth-child(5) { transition-delay: 0.41s; }
+.reveal-stagger.in > *:nth-child(6) { transition-delay: 0.50s; }
+
+/* ── Reduced motion ────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .ticker-track,
+  .strip-track {
+    animation: none;
+  }
+}
