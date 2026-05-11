@@ -141,36 +141,36 @@ export function Services() {
               }}
             >
               {/* Full-card orange wipe */}
-              <div className="absolute left-0 right-0 top-0 h-0 bg-orange transition-all duration-[450ms] cubic-bezier(.2,.7,.2,1) group-hover:h-full z-0" />
+              <div className="absolute left-0 right-0 top-0 h-0 bg-orange transition-all duration-[450ms] group-hover:h-full group-active:h-full z-0" />
 
               {/* Content */}
               <div className="relative z-10 transition-colors duration-400">
                 <div className="flex justify-between items-start gap-4">
-                  <span className="font-mono text-[11px] tracking-[0.14em] text-muted uppercase group-hover:text-white/60 transition-colors duration-400">
+                  <span className="font-mono text-[11px] tracking-[0.14em] text-muted uppercase group-hover:text-white/60 group-active:text-white/60 transition-colors duration-400">
                     {svc.num}
                   </span>
-                  <span className="w-9 h-9 grid place-items-center rounded-full border border-[var(--hairline)] group-hover:border-white/40 transition-colors duration-300">
+                  <span className="w-9 h-9 grid place-items-center rounded-full border border-[var(--hairline)] group-hover:border-white/40 group-active:border-white/40 transition-colors duration-300">
                     <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.5">
                       <path d="M4 12 L12 4 M5 4 H12 V11"/>
                     </svg>
                   </span>
                 </div>
 
-                <div className="mt-8 w-16 h-16 grid place-items-center text-ink group-hover:text-paper transition-colors duration-400">
+                <div className="mt-8 w-16 h-16 grid place-items-center text-ink group-hover:text-paper group-active:text-paper transition-colors duration-400">
                   {svc.icon}
                 </div>
 
-                <h3 className="mt-7 font-display font-medium text-[26px] tracking-snug leading-[1.1] group-hover:text-paper transition-colors duration-400">
+                <h3 className="mt-7 font-display font-medium text-[26px] tracking-snug leading-[1.1] group-hover:text-paper group-active:text-paper transition-colors duration-400">
                   {svc.title}
                 </h3>
-                <p className="mt-2.5 text-muted text-[14.5px] leading-[1.55] max-w-[36ch] group-hover:text-white/85 transition-colors duration-400">
+                <p className="mt-2.5 text-muted text-[14.5px] leading-[1.55] max-w-[36ch] group-hover:text-white/85 group-active:text-white/85 transition-colors duration-400">
                   {svc.desc}
                 </p>
                 <div className="mt-[22px] flex flex-wrap gap-1.5">
                   {svc.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="font-mono text-[10.5px] tracking-wider uppercase px-2.5 py-1 rounded-full bg-paper-2 text-ink border border-[var(--hairline)] group-hover:bg-white/18 group-hover:text-paper group-hover:border-transparent transition-all duration-400"
+                      className="font-mono text-[10.5px] tracking-wider uppercase px-2.5 py-1 rounded-full bg-paper-2 text-ink border border-[var(--hairline)] group-hover:bg-ink/20 group-hover:text-paper group-hover:border-transparent group-active:bg-ink/20 group-active:text-paper group-active:border-transparent transition-all duration-400"
                     >
                       {tag}
                     </span>
