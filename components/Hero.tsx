@@ -268,22 +268,19 @@ function HeroStats() {
   }, []);
 
   return (
-    <div
-      className="mt-20 grid border-t border-b border-[var(--hairline)] max-sm:grid-cols-2"
-      style={{ gridTemplateColumns: "repeat(4,1fr)" }}
-    >
+    <div className="mt-14 md:mt-20 grid grid-cols-2 md:grid-cols-4 border-t border-b border-[var(--hairline)]">
       {STATS.map((s, i) => (
         <div
           key={i}
-          className="p-7 border-r border-[var(--hairline)] flex flex-col gap-1.5 last:border-r-0 max-sm:even:border-r-0 max-sm:[&:nth-child(1)]:border-b max-sm:[&:nth-child(2)]:border-b"
+          className="p-5 md:p-7 flex flex-col gap-1.5 border-r border-[var(--hairline)] [&:nth-child(2)]:border-r-0 md:[&:nth-child(2)]:border-r [&:nth-child(4)]:border-r-0 [&:nth-child(1)]:border-b [&:nth-child(2)]:border-b md:[&:nth-child(1)]:border-b-0 md:[&:nth-child(2)]:border-b-0"
           data-count={s.count}
           ref={(el) => { refs.current[i] = el as HTMLSpanElement; }}
         >
-          <div className="font-display font-medium text-[48px] tracking-[-0.03em] leading-none flex items-baseline gap-0.5 max-md:text-[36px]">
+          <div className="font-display font-medium text-[36px] md:text-[48px] tracking-[-0.03em] leading-none flex items-baseline gap-0.5">
             <span className="stat-num">0</span>
-            {s.suffix && <sup className="text-[22px] text-orange relative top-[-10px] font-medium">{s.suffix}</sup>}
+            {s.suffix && <sup className="text-[18px] md:text-[22px] text-orange relative top-[-8px] font-medium">{s.suffix}</sup>}
           </div>
-          <div className="font-mono text-[11px] tracking-[0.12em] uppercase text-muted">{s.label}</div>
+          <div className="font-mono text-[10px] md:text-[11px] tracking-[0.12em] uppercase text-muted">{s.label}</div>
         </div>
       ))}
     </div>
