@@ -28,7 +28,7 @@ export function CTA() {
         </g>
       </svg>
 
-      <div className="max-w-[1440px] mx-auto px-14 relative z-[2]">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 md:px-14 relative z-[2]">
 
         {/* Eyebrow */}
         <div className="reveal inline-flex items-center gap-3 mb-8">

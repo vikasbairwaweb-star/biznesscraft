@@ -29,7 +29,7 @@ export function Nav() {
           : "bg-[rgba(248,243,231,0.78)] backdrop-blur-[18px] border-[var(--hairline)]"
       )}
     >
-      <div className="max-w-[1440px] mx-auto px-14 flex items-center justify-between h-[72px] max-sm:h-[60px]">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 md:px-14 flex items-center justify-between h-[72px] max-sm:h-[60px]">
         {/* Brand */}
         <a href="#" className="flex items-center gap-2.5 group" aria-label="Biznesscraft home">
           <span className="w-9 h-9 rounded-[9px] bg-ink grid place-items-center text-orange transition-transform duration-400 group-hover:-rotate-[8deg] group-hover:scale-105 max-sm:w-8 max-sm:h-8 max-sm:rounded-[8px]">

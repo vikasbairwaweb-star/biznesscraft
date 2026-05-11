@@ -36,7 +36,7 @@ const NAV_COLS = [
 export function Footer() {
   return (
     <footer className="bg-ink text-paper pt-20 pb-8">
-      <div className="max-w-[1440px] mx-auto px-14">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 md:px-14">
         {/* Top grid */}
         <div
           className="grid gap-12 pb-14 border-b border-white/10 max-md:grid-cols-2 max-sm:grid-cols-1"

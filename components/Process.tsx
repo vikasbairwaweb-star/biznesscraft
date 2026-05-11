@@ -52,7 +52,7 @@ export function Process() {
       {/* Background graphics */}
       <ProcessBg />
 
-      <div className="max-w-[1440px] mx-auto px-14 relative z-[2]">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 md:px-14 relative z-[2]">
         {/* Head */}
         <div className="reveal grid gap-14 mb-[68px] items-end max-md:grid-cols-1 max-md:gap-6" style={{ gridTemplateColumns: "240px 1fr" }}>
           <div className="font-mono text-[11px] tracking-[0.16em] uppercase text-white/50 pt-2 border-t border-paper inline-block w-fit">

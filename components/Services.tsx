@@ -106,10 +106,10 @@ export function Services() {
   }, []);
 
   return (
-    <section id="services" className="bg-paper py-[120px]">
-      <div className="max-w-[1440px] mx-auto px-14">
+    <section id="services" className="bg-paper py-[80px] md:py-[120px]">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 md:px-14">
         {/* Section head */}
-        <div className="reveal grid gap-14 mb-16 items-end max-md:grid-cols-1 max-md:gap-6" style={{ gridTemplateColumns: "240px 1fr" }}>
+        <div className="reveal grid gap-6 md:gap-14 mb-12 md:mb-16 items-end grid-cols-1 md:grid-cols-[240px_1fr]">
           <div>
             <div className="font-mono text-[11px] tracking-[0.16em] uppercase text-muted pt-2 border-t border-ink inline-block">
               N° 02 — Practice
@@ -117,7 +117,7 @@ export function Services() {
           </div>
           <h2
             className="font-display font-medium leading-[0.96] tracking-tightest"
-            style={{ fontSize: "clamp(40px, 5.5vw, 84px)" }}
+            style={{ fontSize: "clamp(36px, 5.5vw, 84px)" }}
           >
             Six disciplines,{" "}
             <em className="font-serif italic text-orange font-normal">one</em> studio.
@@ -127,17 +127,16 @@ export function Services() {
         {/* Grid */}
         <div
           ref={gridRef}
-          className="grid border-t border-ink"
-          style={{ gridTemplateColumns: "repeat(12, 1fr)" }}
+          className="grid border-t border-ink grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
         >
           {SERVICES.map((svc, i) => (
             <div
               key={i}
-              className="svc-card opacity-0 translate-y-6 transition-all duration-700 col-span-4 relative overflow-hidden cursor-pointer group bg-paper"
+              className="svc-card opacity-0 translate-y-6 transition-all duration-700 relative overflow-hidden cursor-pointer group bg-paper"
               style={{
                 borderRight: "1px solid var(--hairline)",
                 borderBottom: "1px solid var(--hairline)",
-                padding: "36px 32px 32px",
+                padding: "28px 24px 24px",
                 transitionDelay: `${i * 0.07}s`,
               }}
             >

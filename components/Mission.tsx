@@ -127,22 +127,22 @@ function MissionBg() {
 
 export function Mission() {
   return (
-    <section id="about" className="py-[120px] relative overflow-hidden isolation-isolate" style={{ background: "var(--cream)" }}>
+    <section id="about" className="py-[80px] md:py-[120px] relative overflow-hidden isolation-isolate" style={{ background: "var(--cream)" }}>
       <MissionBg />
-      <div className="max-w-[1440px] mx-auto px-14 relative z-[2]">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 md:px-14 relative z-[2]">
 
         {/* Section head */}
-        <div className="grid gap-14 mb-16 items-end max-md:grid-cols-1 max-md:gap-6 reveal" style={{ gridTemplateColumns: "240px 1fr" }}>
+        <div className="grid gap-6 md:gap-14 mb-12 md:mb-16 items-end grid-cols-1 md:grid-cols-[240px_1fr] reveal">
           <div className="font-mono text-[11px] tracking-[0.16em] uppercase text-muted pt-2 border-t border-ink inline-block w-fit">
             N° 03 — The Studio
           </div>
-          <h2 className="font-display font-medium leading-[0.96] tracking-tightest" style={{ fontSize: "clamp(40px, 5.5vw, 84px)" }}>
+          <h2 className="font-display font-medium leading-[0.96] tracking-tightest" style={{ fontSize: "clamp(36px, 5.5vw, 84px)" }}>
             Built on craft,{" "}
             <em className="font-serif italic text-orange font-normal">driven</em> by intent.
           </h2>
         </div>
 
-        <div className="grid gap-20 items-start max-md:grid-cols-1 max-md:gap-12" style={{ gridTemplateColumns: "1.05fr 1fr" }}>
+        <div className="grid gap-12 md:gap-20 items-start grid-cols-1 md:grid-cols-[1.05fr_1fr]">
 
           {/* Code card */}
           <div className="relative reveal">

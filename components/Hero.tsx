@@ -13,9 +13,9 @@ export function Hero() {
   return (
     <header className="relative overflow-hidden isolation-isolate" style={{ padding: "64px 0 80px" }}>
       <HeroBg />
-      <div className="max-w-[1440px] mx-auto px-14 relative z-[2]">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 md:px-14 relative z-[2]">
         {/* Meta row */}
-        <div className="grid grid-cols-3 gap-4 pb-6 border-b border-[var(--hairline)] max-md:grid-cols-1 max-md:gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pb-6 border-b border-[var(--hairline)]">
           <MetaCell eyebrow="Volume 04 / 2026" strong="The Software Studio Issue" />
           <MetaCell eyebrow="Practice" strong="Web · Mobile · AI · Automation" />
           <MetaCell eyebrow="Availability" strong="2 new projects this quarter" strongOrange />

@@ -3,7 +3,7 @@
 export function Quote() {
   return (
     <section className="py-[100px]" style={{ background: "var(--cream)" }}>
-      <div className="max-w-[1440px] mx-auto px-14">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 md:px-14">
         <div className="reveal">
           <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-muted flex items-center gap-2 mb-6">
             <span className="inline-block w-1.5 h-1.5 rounded-full bg-orange" />
