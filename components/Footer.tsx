@@ -87,10 +87,11 @@ export function Footer() {
 
         {/* Big wordmark */}
         <div
-          className="font-display font-semibold leading-[0.9] tracking-[-0.05em] text-center whitespace-nowrap overflow-hidden"
+          className="font-display font-semibold leading-[0.9] tracking-[-0.05em] text-center whitespace-nowrap"
           style={{
-            fontSize: "clamp(80px, 18vw, 280px)",
-            margin: "60px 0 -16px",
+            fontSize: "clamp(80px, 16vw, 260px)",
+            margin: "60px -20px -16px",
+            paddingRight: "24px",
           }}
         >
           <b className="text-orange">bizness</b>
